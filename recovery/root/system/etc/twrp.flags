@@ -1,0 +1,31 @@
+#
+# Copyright (C) 2023 The Android Open Source Project
+# Copyright (C) 2023 The TWRP Open Source Project
+# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
+# Copyright (C) 2019-Present A-Team Digital Solutions
+#
+ 
+
+# Dynamic Device Partition Images
+/product_image_a	 emmc	/dev/block/mapper/product_a           flags=backup=1;flashimg=1;wipeingui;display="Product Image A"
+/system_image_a	     emmc  	/dev/block/mapper/system_a            flags=backup=1;flashimg=1;wipeingui;display="System Image A"        
+/system_ext_image_a	 emmc  	/dev/block/mapper/system_ext_a        flags=backup=1;flashimg=1;wipeingui;display="System_Ext Image A"
+/vendor_image_a	     emmc  	/dev/block/mapper/vendor_a            flags=backup=1;flashimg=1;wipeingui;display="Vendor Image A"
+
+/product_image_b	 emmc	/dev/block/mapper/product_b           flags=backup=1;flashimg=1;wipeingui;display="Product Image B"
+/system_image_b	     emmc  	/dev/block/mapper/system_b            flags=backup=1;flashimg=1;wipeingui;display="System Image B" 
+/system_ext_image_b	 emmc  	/dev/block/mapper/system_ext_b        flags=backup=1;flashimg=1;wipeingui;display="System_Ext Image B"
+/vendor_image_b	     emmc  	/dev/block/mapper/vendor_b            flags=backup=1;flashimg=1;wipeingui;display="Vendor Image B"
+
+
+# Standard Device Partitions
+/boot              emmc    /dev/block/bootdevice/by-name/boot                        flags=backup=1;flashimg=1;slotselect
+/data              f2fs    /dev/block/bootdevice/by-name/userdata
+/metadata          ext4    /dev/block/bootdevice/by-name/metadata 
+/product/persist   ext4    /dev/block/bootdevice/by-name/prodpersist
+/vendor/persist    ext4    /dev/block/bootdevice/by-name/persist
+
+
+# Removable Storage
+/external_sd   auto    /dev/block/mmcblk1p1               /dev/block/mmcblk1     flags=storage;wipeingui;removable;display="MicroSD-Card"
+/usbstorage    auto    /dev/block/sdg1                    /dev/block/sdg         flags=storage;wipeingui;fsflags=utf8;removable;display="USB-OTG"
